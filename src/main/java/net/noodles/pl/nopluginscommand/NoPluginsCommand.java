@@ -25,7 +25,6 @@ public final class NoPluginsCommand extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onCommandUse(PlayerCommandPreprocessEvent event) {
-        Player player = event.getPlayer();
         List<String> commands = Arrays.asList("pl", "about", "version", "ver", "plugins", "bukkit:pl", "bukkit:about", "bukkit:version", "bukkit:ver", "bukkit:plugins", "minecraft:pl", "minecraft:plugins", "minecraft:about", "minecraft:version", "minecraft:ver");
         commands.forEach(all -> {
          if (event.getMessage().toLowerCase().equalsIgnoreCase("/" + all.toLowerCase())) {
