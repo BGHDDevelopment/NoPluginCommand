@@ -1,6 +1,6 @@
 name: NoPluginsCommand
 version: ${project.version}
 main: net.noodles.pl.nopluginscommand.NoPluginsCommand
-authors: [BGHDDevelopment]
+authors: [BGHDDevelopmentLLC]
 description: Blocks /plugin, /about, /version, and more!
 website: https://bghddevelopment.com
