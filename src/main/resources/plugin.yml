@@ -4,3 +4,4 @@ main: net.noodles.pl.nopluginscommand.NoPluginsCommand
 authors: [BGHDDevelopmentLLC]
 description: Blocks /plugin, /about, /version, and more!
 website: https://bghddevelopment.com
+api-version: 1.18
