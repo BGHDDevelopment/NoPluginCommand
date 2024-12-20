@@ -1,6 +1,7 @@
 package net.noodles.pl.nopluginscommand;
 
 import net.noodles.pl.nopluginscommand.listener.CommandListener;
+import net.noodles.pl.nopluginscommand.listener.ServerCommandsListener;
 import net.noodles.pl.nopluginscommand.util.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -18,6 +19,7 @@ public final class NoPluginsCommand extends JavaPlugin implements Listener {
     public void onEnable() {
         plugin = this;
         getServer().getPluginManager().registerEvents(new CommandListener(), this);
+        getServer().getPluginManager().registerEvents(new ServerCommandsListener(), this);
         UpdateChecker.updateCheck(Bukkit.getConsoleSender());
     }
 
