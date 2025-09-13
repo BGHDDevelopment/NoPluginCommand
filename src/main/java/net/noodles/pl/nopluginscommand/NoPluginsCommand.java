@@ -18,6 +18,7 @@ public final class NoPluginsCommand extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         plugin = this;
+        saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new CommandListener(), this);
         getServer().getPluginManager().registerEvents(new ServerCommandsListener(), this);
         UpdateChecker.updateCheck(Bukkit.getConsoleSender());

@@ -37,17 +37,13 @@ public class UpdateChecker {
                         JsonObject plugins = object.get("plugins").getAsJsonObject();
                         JsonObject info = plugins.get("NoPluginCommand").getAsJsonObject();
                         String version = info.get("version").getAsString();
-                        if (version.equals(NoPluginsCommand.getPlugin().getDescription().getVersion())) {
+                        if (isNewerOrEqual(NoPluginsCommand.getPlugin().getDescription().getVersion(), version)) {
                             sender.sendMessage("§aNoPluginCommand is on the latest version.");
                         } else {
                             sender.sendMessage("");
-                            sender.sendMessage("");
                             sender.sendMessage("§cYour NoPluginCommand version is out of date!");
-                            sender.sendMessage("§cWe recommend updating ASAP!");
-                            sender.sendMessage("");
                             sender.sendMessage("§cYour Version: §e" + NoPluginsCommand.getPlugin().getDescription().getVersion());
                             sender.sendMessage("§aNewest Version: §e" + version);
-                            sender.sendMessage("");
                             sender.sendMessage("");
                         }
                     } else {
@@ -58,6 +54,26 @@ public class UpdateChecker {
                 }
             }
         }.runTaskAsynchronously(NoPluginsCommand.getPlugin());
+    }
+
+    /*
+     * 1.5 > 1.2 → your version is newer
+     * 1.2.1 > 1.2 → patch versions also handled
+     * 1.10 > 1.2 (and not the other way around as with plain strings).
+     */
+    private static boolean isNewerOrEqual(String current, String latest) {
+        String[] parts1 = current.split("\\.");
+        String[] parts2 = latest.split("\\.");
+        int length = Math.max(parts1.length, parts2.length);
+
+        for (int i = 0; i < length; i++) {
+            int p1 = i < parts1.length ? Integer.parseInt(parts1[i]) : 0;
+            int p2 = i < parts2.length ? Integer.parseInt(parts2[i]) : 0;
+
+            if (p1 < p2) return false;
+            if (p1 > p2) return true;
+        }
+        return true;
     }
 
 }

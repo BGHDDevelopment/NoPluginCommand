@@ -1,10 +1,13 @@
 package net.noodles.pl.nopluginscommand.util;
 
+import net.noodles.pl.nopluginscommand.NoPluginsCommand;
+
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 public class CommandSet {
 
-    public static final HashSet<String> set = new HashSet<>(Arrays.asList("?", "pl", "about", "version", "ver", "plugins", "bukkit:?", "bukkit:pl", "bukkit:about", "bukkit:version", "bukkit:ver", "bukkit:plugins", "minecraft:pl", "minecraft:plugins", "minecraft:about", "minecraft:version", "minecraft:ver"));
+    public static final HashSet<String> set = new HashSet<>(NoPluginsCommand.getPlugin().getConfig().getStringList("commands"));
 
 }
